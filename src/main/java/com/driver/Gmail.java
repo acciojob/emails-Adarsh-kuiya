@@ -36,30 +36,33 @@ public class Gmail extends Email {
     public void deleteMail(String message){
         // Each message is distinct
         // If the given message is found in any mail in the inbox, move the mail to trash, else do nothing
-        int idx=-1;
+        Mail mail =null;
     for(int i=0;i<inbox.size();i++){
-    if(message.equals(inbox.get(i).message)){
-        idx=i;
+       Mail mail1 = inbox.get(i);
+    if(message.equals(mail1.message)){
+        mail=mail1;
         break;
         }
     }
-    if(idx!=-1){
-       trash.add(inbox.get(idx));
-       inbox.remove(idx);
+    if(mail!=null){
+       trash.add(mail);
+       inbox.remove(mail);
     }
     }
     public String findLatestMessage(){
         // If the inbox is empty, return null
         // Else, return the message of the latest mail present in the inbox
     if(inbox.isEmpty())return  null;
-    return inbox.get(inbox.size()-1).message;
+    Mail mail=inbox.get(inbox.size()-1);
+    return mail.message;
     }
 
     public String findOldestMessage(){
         // If the inbox is empty, return null
         // Else, return the message of the oldest mail present in the inbox
      if(inbox.isEmpty())return null;
-    return inbox.get(0).message;
+     Mail mail= inbox.get(0);
+    return mail.message;
     }
 
     public int findMailsBetweenDates(Date start, Date end){
@@ -67,7 +70,8 @@ public class Gmail extends Email {
         //It is guaranteed that start date <= end date
     int count=0;
     for(int i=0;i<inbox.size();i++){
-     if(inbox.get(i).date.compareTo(start)>=0 &&inbox.get(i).date.compareTo(end)<=0)count+=1;
+        Mail mail=inbox.get(i);
+     if(mail.date.compareTo(start)>=0 &&mail.date.compareTo(end)<=0)count+=1;
          }
     return count;
     }

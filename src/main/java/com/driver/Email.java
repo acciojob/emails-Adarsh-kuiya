@@ -28,16 +28,16 @@ public class Email {
         // 5. It contains at least one special character. Any character apart from alphabets and digits is a special character
 if(oldPassword.equals(password)){
    if(isValid(newPassword)){
-       System.out.println("Password change successfully");
+//       System.out.println("Password change successfully");
        this.password=newPassword;
    }
-   else{
-       System.out.println("password is not valid");
-   }
+//   else{
+//       System.out.println("password is not valid");
+//   }
 }
-else{
-    System.out.println("password not matching old password");
-}
+//else{
+//    System.out.println("password not matching old password");
+//}
     }
     public boolean isValid(String newPassword){
         boolean uppercase=false;

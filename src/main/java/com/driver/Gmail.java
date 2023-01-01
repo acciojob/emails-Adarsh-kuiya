@@ -40,7 +40,7 @@ public class Gmail extends Email {
         Mail mail =null;
     for(int i=0;i<inbox.size();i++){
        Mail mail1 = inbox.get(i);
-    if(message.equals(mail1.message)){
+    if(message.equals(mail1.getMessage())){
         mail=mail1;
         break;
         }
@@ -55,7 +55,7 @@ public class Gmail extends Email {
         // Else, return the message of the latest mail present in the inbox
     if(inbox.isEmpty())return  null;
     Mail mail=inbox.get(inbox.size()-1);
-    return mail.message;
+    return mail.getMessage();
     }
 
     public String findOldestMessage(){
@@ -63,7 +63,7 @@ public class Gmail extends Email {
         // Else, return the message of the oldest mail present in the inbox
      if(inbox.isEmpty())return null;
      Mail mail= inbox.get(0);
-    return mail.message;
+    return mail.getMessage();
     }
 
     public int findMailsBetweenDates(Date start, Date end){
@@ -72,7 +72,7 @@ public class Gmail extends Email {
     int count=0;
     for(int i=0;i<inbox.size();i++){
         Mail mail=inbox.get(i);
-     if(mail.date.compareTo(start)>=0 &&mail.date.compareTo(end)<=0)count+=1;
+     if(mail.getDate().compareTo(start)>=0 &&mail.getDate().compareTo(end)<=0)count+=1;
          }
     return count;
     }
